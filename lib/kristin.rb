@@ -15,7 +15,8 @@ module Kristin
       raise IOError, "Can't find pdf2htmlex executable in PATH" if not command_available?
       src = determine_source(@source)
       opts = process_options.split(" ")
-      args = [pdf2htmlex_command, opts, src, @target].flatten
+      cmd = pdf2htmlex_command.split(" ")
+      args = [cmd, opts, src, @target].flatten
       pid = Spoon.spawnp(*args)
       Process.waitpid(pid)
 
