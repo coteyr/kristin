@@ -16,6 +16,7 @@ module Kristin
       src = determine_source(@source)
       opts = process_options.split(" ")
       cmd = pdf2htmlex_command.split(" ")
+
       args = [cmd, opts, src, @target].flatten
       pid = Spoon.spawnp(*args)
       Process.waitpid(pid)
